@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/luryon/go-ecommerce/infrastructure/handler"
 	"github.com/luryon/go-ecommerce/infrastructure/handler/response"
 	"log"
 	"os"
@@ -24,7 +25,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_ = dbPool
+	handler.InitRoutes(e, dbPool)
 
 	err = e.Start(":" + os.Getenv("SERVER_PORT"))
 	if err != nil {
